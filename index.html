@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TeddyYeung</title>
+  <meta name="description" content="TeddyYeung — Flutter and mobile developer. Maintainer of flutter_mute_plus.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbfbfa;
+      --surface: #ffffff;
+      --text: #1b1d21;
+      --muted: #5f6570;
+      --border: #e6e6e3;
+      --accent: #0b6bcb;
+      --accent-soft: #e8f1fb;
+      --ok: #1e7f4f;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111316;
+        --surface: #181b1f;
+        --text: #e9eaec;
+        --muted: #9aa0a9;
+        --border: #2a2e34;
+        --accent: #5aa6f0;
+        --accent-soft: #1a2837;
+        --ok: #4fbf87;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 Inter, system-ui, -apple-system, sans-serif;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code, .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.9em; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 72px 16px 48px; }
+    header h1 { font-size: 2.25rem; letter-spacing: -0.02em; margin: 0 0 4px; }
+    header .role { color: var(--muted); font-size: 1.1rem; margin: 0 0 20px; }
+    header p { margin: 0 0 20px; max-width: 60ch; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .links a {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      padding: 6px 12px;
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+    .links a:hover { border-color: var(--accent); text-decoration: none; }
+    section { margin-top: 56px; }
+    h2 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+    .card h3 { margin: 0 0 4px; font-size: 1.15rem; }
+    .card .meta { color: var(--muted); font-size: 0.9rem; margin: 0 0 12px; }
+    .card p { margin: 0 0 12px; }
+    .card ul { margin: 0 0 12px; padding-left: 0; list-style: none; }
+    .card li { padding-left: 22px; position: relative; margin: 4px 0; }
+    .card li::before { content: "✓"; position: absolute; left: 0; color: var(--ok); font-weight: 600; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .tag {
+      font-size: 0.8rem;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .card .actions { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.95rem; }
+    footer { margin-top: 64px; color: var(--muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>TeddyYeung</h1>
+      <p class="role">Flutter &amp; mobile developer</p>
+      <p>I build Flutter apps and the native Android and iOS plugins behind them. I also maintain open-source Flutter packages so they keep building with current Android, Xcode and Flutter toolchains.</p>
+      <nav class="links">
+        <a href="https://github.com/TeddyYeung">GitHub</a>
+        <a href="https://pub.dev/packages/flutter_mute_plus">pub.dev</a>
+      </nav>
+    </header>
+
+    <section>
+      <h2>Open source</h2>
+      <article class="card">
+        <h3>flutter_mute_plus</h3>
+        <p class="meta">Flutter plugin · Android (Kotlin) · iOS (Swift)</p>
+        <p>Check or toggle the device ringer mode (normal, silent, vibrate). A maintained fork of <a href="https://github.com/Alezhka/flutter_mute">flutter_mute</a>, whose last release was in 2021 and no longer builds with current toolchains.</p>
+        <ul>
+          <li>Builds on Android Gradle Plugin 8 and 9</li>
+          <li>Compiles on Xcode 16 and later</li>
+          <li>Swift Package Manager support, with CocoaPods kept</li>
+          <li>Fixes a hanging <code>openNotificationPolicySettings()</code> call and an SPM compile error in the upstream PR</li>
+          <li>Unit and integration tests; drop-in Dart API</li>
+        </ul>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Kotlin</span><span class="tag">Swift</span><span class="tag">SPM</span></div>
+        <div class="actions">
+          <a href="https://pub.dev/packages/flutter_mute_plus">pub.dev</a>
+          <a href="https://github.com/TeddyYeung/flutter_mute_plus">Source</a>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <article class="card">
+        <h3>flutter_highlight_korean_text</h3>
+        <p class="meta">Flutter library</p>
+        <p>Text highlighting for Korean in Flutter.</p>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Korean</span></div>
+        <div class="actions"><a href="https://github.com/TeddyYeung/flutter_highlight_korean_text">Source</a></div>
+      </article>
+      <article class="card">
+        <h3>pokedex-flutter-redux-modular-clean-architecture</h3>
+        <p class="meta">Flutter app · architecture study</p>
+        <p>A Pokédex app built to explore Redux state management in a modular clean architecture.</p>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Redux</span><span class="tag">Clean Architecture</span></div>
+        <div class="actions"><a href="https://github.com/TeddyYeung/pokedex-flutter-redux-modular-clean-architecture">Source</a></div>
+      </article>
+    </section>
+
+    <footer>© 2026 TeddyYeung · <a href="https://github.com/TeddyYeung">github.com/TeddyYeung</a></footer>
+  </main>
+</body>
+</html>
