@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TeddyYeung</title>
-  <meta name="description" content="TeddyYeung — Flutter and mobile developer. Maintainer of flutter_mute_plus.">
+  <meta name="description" content="TeddyYeung: Flutter and mobile developer. Contributor to flutter/packages and maintainer of flutter_mute_plus.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -86,6 +86,23 @@
       border-radius: 999px;
     }
     .card .actions { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.95rem; }
+    .card .meta .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 1px 8px;
+      border-radius: 999px;
+      margin-left: 6px;
+      border: 1px solid var(--border);
+    }
+    .badge.merged { color: var(--ok); border-color: var(--ok); }
+    .badge.review { color: var(--muted); }
+    .intro { color: var(--muted); margin: -6px 0 18px; font-size: 0.95rem; }
+    .stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+    .stack .card { margin: 0; }
+    .stack h3 { font-size: 1rem; margin-bottom: 8px; }
+    .stack p { color: var(--muted); font-size: 0.95rem; margin: 0; }
+    .compact li { margin: 6px 0; }
+    .compact li::before { content: "○"; color: var(--muted); font-weight: 400; }
     footer { margin-top: 64px; color: var(--muted); font-size: 0.85rem; }
   </style>
 </head>
@@ -95,14 +112,79 @@
       <h1>TeddyYeung</h1>
       <p class="role">Flutter &amp; mobile developer</p>
       <p>I build Flutter apps and the native Android and iOS plugins behind them. I also maintain open-source Flutter packages so they keep building with current Android, Xcode and Flutter toolchains.</p>
+      <p>Most of my open-source work is about keeping Flutter plugins healthy on iOS: adding Swift Package Manager support, fixing native bugs, and making sure existing CocoaPods users never see a breaking change.</p>
       <nav class="links">
         <a href="https://github.com/TeddyYeung">GitHub</a>
         <a href="https://pub.dev/packages/flutter_mute_plus">pub.dev</a>
+        <a href="https://www.linkedin.com/in/teddyyeung">LinkedIn</a>
+        <a href="https://medium.com/@TeddyYeung">Medium</a>
+        <a href="https://teddyyeung.gitbook.io/teddyyeung-docs/">Notes</a>
       </nav>
     </header>
 
+
     <section>
-      <h2>Open source</h2>
+      <h2>Open source contributions</h2>
+      <p class="intro">Merged pull requests to Flutter packages used in production apps.</p>
+
+      <article class="card">
+        <h3>flutter/packages · image_picker_ios</h3>
+        <p class="meta">Official Flutter team repository · Objective-C, Swift Testing <span class="badge merged">Merged · shipped in 0.8.13+10</span></p>
+        <p>Fixed a long-standing iOS bug (<a href="https://github.com/flutter/flutter/issues/132154">flutter/flutter#132154</a>, open since 2023) where picking an image that <code>UIImage</code> cannot decode, such as AVIF, left the picker hanging or was treated as a successful save.</p>
+        <ul>
+          <li>The operation now completes with the existing <code>invalid_image</code> error instead of continuing with a <code>nil</code> image</li>
+          <li>Added a regression test that checks no path is returned and the <code>NSOperation</code> finishes</li>
+          <li>Went through the full flutter/packages process: Google CLA, several upstream merge-conflict resolutions, and porting the test to the new Swift Testing suite</li>
+        </ul>
+        <div class="tags"><span class="tag">image_picker · ~5M downloads/mo</span><span class="tag">iOS</span><span class="tag">PHPicker</span></div>
+        <div class="actions"><a href="https://github.com/flutter/packages/pull/12267">PR #12267</a><a href="https://pub.dev/packages/image_picker_ios">pub.dev</a></div>
+      </article>
+
+      <article class="card">
+        <h3>flutter_foreground_task</h3>
+        <p class="meta">Background execution plugin · Swift, Objective-C <span class="badge merged">Merged · shipped in v11.0.0</span></p>
+        <p>Added iOS Swift Package Manager support to one of the most-used background-execution plugins in Flutter.</p>
+        <ul>
+          <li>Worked around SPM's no-mixed-language-target rule by isolating a pure-Swift SPM target</li>
+          <li>Kept the existing Objective-C + Swift CocoaPods path intact, with zero breaking changes</li>
+          <li>Made implicit umbrella-header imports explicit so the module compiles standalone under SPM</li>
+        </ul>
+        <div class="tags"><span class="tag">~219K downloads/mo</span><span class="tag">SPM</span><span class="tag">+1,276 LOC · 24 files</span></div>
+        <div class="actions"><a href="https://github.com/Dev-hwang/flutter_foreground_task/pull/387">PR #387</a></div>
+      </article>
+
+      <article class="card">
+        <h3>image_gallery_saver_plus</h3>
+        <p class="meta">Media plugin · Swift Package Manager <span class="badge merged">Merged</span></p>
+        <p>Found and fixed a broken <code>Package.swift</code> that declared a non-existent <code>FlutterFramework</code> dependency, which made SPM resolution fail for every app using the plugin.</p>
+        <ul>
+          <li>Aligned the iOS deployment target with the podspec</li>
+          <li>Brought the manifest in line with Flutter's official plugin SPM template</li>
+        </ul>
+        <div class="tags"><span class="tag">~136K downloads/mo</span><span class="tag">SPM</span></div>
+        <div class="actions"><a href="https://github.com/ArmanKT/image_gallery_saver_plus/pull/3">PR #3</a></div>
+      </article>
+
+      <article class="card">
+        <h3>is_lock_screen2</h3>
+        <p class="meta">Lock screen detection plugin · Swift <span class="badge merged">Merged · shipped in v2.1.0</span></p>
+        <p>Added iOS Swift Package Manager support while keeping CocoaPods, and verified builds on both paths.</p>
+        <div class="tags"><span class="tag">SPM</span><span class="tag">+409 / −148 LOC</span></div>
+        <div class="actions"><a href="https://github.com/Wing-Li/flutter_is_lock_screen2/pull/10">PR #10</a></div>
+      </article>
+
+      <article class="card compact">
+        <h3>In review</h3>
+        <ul>
+          <li><a href="https://github.com/AppsFlyerSDK/appsflyer-flutter-plugin/pull/456">appsflyer_sdk #456</a>: fix iOS callback ownership when the plugin is registered on more than one FlutterEngine</li>
+          <li><a href="https://github.com/yazanalkamsheh/flutter_jailbreak_detection_plus/pull/9">flutter_jailbreak_detection_plus #9</a>: iOS Swift Package Manager support (approved)</li>
+          <li><a href="https://github.com/fuadarradhi/datetime_setting/pull/10">datetime_setting #10</a>: iOS Swift Package Manager support</li>
+        </ul>
+      </article>
+    </section>
+
+    <section>
+      <h2>Maintained packages</h2>
       <article class="card">
         <h3>flutter_mute_plus</h3>
         <p class="meta">Flutter plugin · Android (Kotlin) · iOS (Swift)</p>
@@ -138,6 +220,16 @@
         <div class="tags"><span class="tag">Flutter</span><span class="tag">Redux</span><span class="tag">Clean Architecture</span></div>
         <div class="actions"><a href="https://github.com/TeddyYeung/pokedex-flutter-redux-modular-clean-architecture">Source</a></div>
       </article>
+    </section>
+
+
+    <section>
+      <h2>What I work with</h2>
+      <div class="stack">
+        <article class="card"><h3>Flutter &amp; Dart</h3><p>Apps, plugins, method channels, federated plugin packages, pub.dev publishing</p></article>
+        <article class="card"><h3>iOS</h3><p>Swift, Objective-C, Swift Package Manager, CocoaPods, XCTest and Swift Testing</p></article>
+        <article class="card"><h3>Android</h3><p>Kotlin, Gradle Kotlin DSL, Android Gradle Plugin 8/9 migration</p></article>
+      </div>
     </section>
 
     <footer>© 2026 TeddyYeung · <a href="https://github.com/TeddyYeung">github.com/TeddyYeung</a></footer>
