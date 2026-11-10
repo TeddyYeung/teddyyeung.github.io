@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TeddyYeung</title>
-  <meta name="description" content="TeddyYeung: Flutter and mobile developer. Contributor to flutter/packages and maintainer of flutter_mute_plus.">
+  <title>Teddy Yeung</title>
+  <meta name="description" content="Teddy Yeung: mobile engineer building production iOS and Android apps with Flutter. Contributor to flutter/flutter and flutter/packages, maintainer of flutter_jailbreak_guard and flutter_mute_plus.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -103,19 +103,27 @@
     .stack p { color: var(--muted); font-size: 0.95rem; margin: 0; }
     .compact li { margin: 6px 0; }
     .compact li::before { content: "○"; color: var(--muted); font-weight: 400; }
+    .focus { margin: 0 0 20px; padding-left: 18px; max-width: 64ch; }
+    .focus li { margin: 4px 0; }
     footer { margin-top: 64px; color: var(--muted); font-size: 0.85rem; }
   </style>
 </head>
 <body>
   <main class="wrap">
     <header>
-      <h1>TeddyYeung</h1>
-      <p class="role">Flutter &amp; mobile developer</p>
-      <p>I build Flutter apps and the native Android and iOS plugins behind them. I also maintain open-source Flutter packages so they keep building with current Android, Xcode and Flutter toolchains.</p>
-      <p>Most of my open-source work is about keeping Flutter plugins healthy on iOS: adding Swift Package Manager support, fixing native bugs, and making sure existing CocoaPods users never see a breaking change.</p>
+      <h1>Teddy Yeung</h1>
+      <p class="role">Mobile engineer (5 years)</p>
+      <p>I build and operate production iOS and Android apps with Flutter, along with the native Swift and Kotlin code behind them.</p>
+      <ul class="focus">
+        <li><strong>Architecture</strong>: modular, testable codebases that scale with the product and the team</li>
+        <li><strong>Delivery</strong>: CI/CD and build automation that keep releases fast and predictable</li>
+        <li><strong>AI-assisted engineering</strong>: integrating coding agents into review, testing, and release workflows</li>
+        <li><strong>Platform</strong>: native-layer work in Swift and Kotlin, contributed upstream to Flutter and its plugins</li>
+      </ul>
+      <p>Most of my open-source work keeps Flutter plugins healthy on iOS: adding Swift Package Manager support, fixing native bugs, and making sure existing CocoaPods users never see a breaking change. More recently I have been working on image decoding in the Flutter web engine.</p>
       <nav class="links">
         <a href="https://github.com/TeddyYeung">GitHub</a>
-        <a href="https://pub.dev/packages/flutter_mute_plus">pub.dev</a>
+        <a href="https://pub.dev/publishers/teddyyeung.is-a.dev/packages">pub.dev</a>
         <a href="https://www.linkedin.com/in/teddyyeung">LinkedIn</a>
         <a href="https://medium.com/@TeddyYeung">Medium</a>
         <a href="https://teddyyeung.gitbook.io/teddyyeung-docs/">Notes</a>
@@ -125,7 +133,7 @@
 
     <section>
       <h2>Open source contributions</h2>
-      <p class="intro">Merged pull requests to Flutter packages used in production apps.</p>
+      <p class="intro">Merged pull requests to Flutter packages used in production apps. Detailed write-ups: <a href="https://github.com/TeddyYeung/open-source-contributions">open-source-contributions</a>.</p>
 
       <article class="card">
         <h3>flutter/packages · image_picker_ios</h3>
@@ -136,7 +144,7 @@
           <li>Added a regression test that checks no path is returned and the <code>NSOperation</code> finishes</li>
           <li>Went through the full flutter/packages process: Google CLA, several upstream merge-conflict resolutions, and porting the test to the new Swift Testing suite</li>
         </ul>
-        <div class="tags"><span class="tag">image_picker · ~5M downloads/mo</span><span class="tag">iOS</span><span class="tag">PHPicker</span></div>
+        <div class="tags"><span class="tag">image_picker · ~5.9M downloads/mo</span><span class="tag">iOS</span><span class="tag">PHPicker</span></div>
         <div class="actions"><a href="https://github.com/flutter/packages/pull/12267">PR #12267</a><a href="https://pub.dev/packages/image_picker_ios">pub.dev</a></div>
       </article>
 
@@ -149,7 +157,7 @@
           <li>Kept the existing Objective-C + Swift CocoaPods path intact, with zero breaking changes</li>
           <li>Made implicit umbrella-header imports explicit so the module compiles standalone under SPM</li>
         </ul>
-        <div class="tags"><span class="tag">~219K downloads/mo</span><span class="tag">SPM</span><span class="tag">+1,276 LOC · 24 files</span></div>
+        <div class="tags"><span class="tag">~270K downloads/mo</span><span class="tag">SPM</span><span class="tag">+1,276 LOC · 24 files</span></div>
         <div class="actions"><a href="https://github.com/Dev-hwang/flutter_foreground_task/pull/387">PR #387</a></div>
       </article>
 
@@ -161,8 +169,20 @@
           <li>Aligned the iOS deployment target with the podspec</li>
           <li>Brought the manifest in line with Flutter's official plugin SPM template</li>
         </ul>
-        <div class="tags"><span class="tag">~136K downloads/mo</span><span class="tag">SPM</span></div>
+        <div class="tags"><span class="tag">~151K downloads/mo</span><span class="tag">SPM</span></div>
         <div class="actions"><a href="https://github.com/ArmanKT/image_gallery_saver_plus/pull/3">PR #3</a></div>
+      </article>
+
+      <article class="card">
+        <h3>flutter_jailbreak_detection_plus</h3>
+        <p class="meta">Jailbreak and root detection plugin · Swift <span class="badge merged">Merged · shipped in v1.10.8</span></p>
+        <p>Added iOS Swift Package Manager support alongside CocoaPods, with no Dart API changes.</p>
+        <ul>
+          <li>Added a Flutter-style SPM package layout that registers the existing method channel</li>
+          <li>Pulled <code>IOSSecuritySuite</code> in through SwiftPM; CocoaPods files and Android left unchanged</li>
+        </ul>
+        <div class="tags"><span class="tag">~63K downloads/mo</span><span class="tag">SPM</span></div>
+        <div class="actions"><a href="https://github.com/yazanalkamsheh/flutter_jailbreak_detection_plus/pull/9">PR #9</a></div>
       </article>
 
       <article class="card">
@@ -176,8 +196,9 @@
       <article class="card compact">
         <h3>In review</h3>
         <ul>
+          <li><a href="https://github.com/flutter/flutter/pull/195958">flutter/flutter #195958</a>: [web] fix decoding of still AVIF images on Chrome (approved)</li>
+          <li><a href="https://github.com/flutter/flutter/pull/196029">flutter/flutter #196029</a>: [web] decode images once in <code>instantiateImageCodecWithSize</code> instead of twice</li>
           <li><a href="https://github.com/AppsFlyerSDK/appsflyer-flutter-plugin/pull/456">appsflyer_sdk #456</a>: fix iOS callback ownership when the plugin is registered on more than one FlutterEngine</li>
-          <li><a href="https://github.com/yazanalkamsheh/flutter_jailbreak_detection_plus/pull/9">flutter_jailbreak_detection_plus #9</a>: iOS Swift Package Manager support (approved)</li>
           <li><a href="https://github.com/fuadarradhi/datetime_setting/pull/10">datetime_setting #10</a>: iOS Swift Package Manager support</li>
         </ul>
       </article>
@@ -185,16 +206,34 @@
 
     <section>
       <h2>Maintained packages</h2>
+      <p class="intro">Published under the verified pub.dev publisher <a href="https://pub.dev/publishers/teddyyeung.is-a.dev/packages">teddyyeung.is-a.dev</a>.</p>
+      <article class="card">
+        <h3>flutter_jailbreak_guard</h3>
+        <p class="meta">Flutter plugin · Android (Kotlin) · iOS (Swift) · v0.2.1</p>
+        <p>Jailbreak and root detection with Swift Package Manager support. A drop-in replacement for <code>flutter_jailbreak_detection_plus</code> that uses the same detection engines and gives the same results.</p>
+        <ul>
+          <li>Swift Package Manager and CocoaPods on iOS</li>
+          <li>Fail-closed: a missing result reports the device as unsafe</li>
+          <li>Android root checks run on a background task queue, off the main thread</li>
+          <li>Choice of iOS engine license: <code>IOSSecuritySuite</code> 1.9.x (BSD-2) or 2.x (EULA)</li>
+          <li>Dart unit tests, a Kotlin unit test, and integration tests</li>
+        </ul>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Kotlin</span><span class="tag">Swift</span><span class="tag">SPM</span><span class="tag">Security</span></div>
+        <div class="actions">
+          <a href="https://pub.dev/packages/flutter_jailbreak_guard">pub.dev</a>
+          <a href="https://github.com/TeddyYeung/flutter_jailbreak_guard">Source</a>
+        </div>
+      </article>
       <article class="card">
         <h3>flutter_mute_plus</h3>
         <p class="meta">Flutter plugin · Android (Kotlin) · iOS (Swift)</p>
-        <p>Check or toggle the device ringer mode (normal, silent, vibrate). A maintained fork of <a href="https://github.com/Alezhka/flutter_mute">flutter_mute</a>, whose last release was in 2021 and no longer builds with current toolchains.</p>
+        <p>Check or toggle the device ringer mode (normal, silent, vibrate). A maintained fork of <a href="https://github.com/Alezhka/flutter_mute"><code>flutter_mute</code></a>, whose last release was in 2021 and no longer builds with current toolchains.</p>
         <ul>
           <li>Builds on Android Gradle Plugin 8 and 9</li>
           <li>Compiles on Xcode 16 and later</li>
           <li>Swift Package Manager support, with CocoaPods kept</li>
           <li>Fixes a hanging <code>openNotificationPolicySettings()</code> call and an SPM compile error in the upstream PR</li>
-          <li>Unit and integration tests; drop-in Dart API</li>
+          <li>Unit and integration tests; drop-in Dart API; 160/160 pub points</li>
         </ul>
         <div class="tags"><span class="tag">Flutter</span><span class="tag">Kotlin</span><span class="tag">Swift</span><span class="tag">SPM</span></div>
         <div class="actions">
@@ -232,7 +271,7 @@
       </div>
     </section>
 
-    <footer>© 2026 TeddyYeung · <a href="https://github.com/TeddyYeung">github.com/TeddyYeung</a></footer>
+    <footer>© 2026 Teddy Yeung · <a href="https://github.com/TeddyYeung">github.com/TeddyYeung</a></footer>
   </main>
 </body>
 </html>
