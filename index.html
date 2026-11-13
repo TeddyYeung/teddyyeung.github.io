@@ -133,7 +133,20 @@
 
     <section>
       <h2>Open source contributions</h2>
-      <p class="intro">Merged pull requests to Flutter packages used in production apps. Detailed write-ups: <a href="https://github.com/TeddyYeung/open-source-contributions">open-source-contributions</a>.</p>
+      <p class="intro">Merged pull requests to Flutter and the packages used in production apps. Detailed write-ups: <a href="https://github.com/TeddyYeung/open-source-contributions">open-source-contributions</a>.</p>
+
+      <article class="card">
+        <h3>flutter/flutter · web engine</h3>
+        <p class="meta">Flutter framework and engine repository · Dart, Web <span class="badge merged">Merged</span></p>
+        <p>Fixed still AVIF images failing to decode on Chrome (<a href="https://github.com/flutter/flutter/issues/160600">flutter/flutter#160600</a>, open since 2024) in both the CanvasKit and Skwasm renderers.</p>
+        <ul>
+          <li>Traced the failure to <code>ImageDecoder</code> being created with <code>preferAnimation: true</code>, which Chrome rejects for still AVIF images; without it, animated GIF, WebP and AVIF keep their frame counts</li>
+          <li>Compared all 141 GIF, WebP, AVIF, PNG and JPEG test images from Skia's resources under both settings before changing the default</li>
+          <li>Added four tests covering still and animated AVIF, decoded from bytes and through the URL streaming path</li>
+        </ul>
+        <div class="tags"><span class="tag">Flutter web</span><span class="tag">CanvasKit · Skwasm</span><span class="tag">ImageDecoder</span></div>
+        <div class="actions"><a href="https://github.com/flutter/flutter/pull/195958">PR #195958</a></div>
+      </article>
 
       <article class="card">
         <h3>flutter/packages · image_picker_ios</h3>
@@ -196,7 +209,6 @@
       <article class="card compact">
         <h3>In review</h3>
         <ul>
-          <li><a href="https://github.com/flutter/flutter/pull/195958">flutter/flutter #195958</a>: [web] fix decoding of still AVIF images on Chrome (approved)</li>
           <li><a href="https://github.com/flutter/flutter/pull/196029">flutter/flutter #196029</a>: [web] decode images once in <code>instantiateImageCodecWithSize</code> instead of twice</li>
           <li><a href="https://github.com/AppsFlyerSDK/appsflyer-flutter-plugin/pull/456">appsflyer_sdk #456</a>: fix iOS callback ownership when the plugin is registered on more than one FlutterEngine</li>
           <li><a href="https://github.com/fuadarradhi/datetime_setting/pull/10">datetime_setting #10</a>: iOS Swift Package Manager support</li>
